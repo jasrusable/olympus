@@ -1,0 +1,32 @@
+    <style type="text/css" media="screen, print, projection">
+    body,
+    html {
+        margin:0;
+        padding:0;
+        color:#000;
+        background:white;
+    }
+    #wrap {
+        width:900px;
+        margin:0 auto;
+        background:#99c;
+    }
+    #controls {
+        padding:5px 10px;
+        background:#ddd;
+        height: 60px;
+    }
+    #main {
+        float:right;
+        width:700px;
+        padding:10px;
+        background:#9c9;
+        height: 1000px;
+    }
+    #sidebar {
+        float:left;
+        width:160px;
+        padding:10px;
+        background:#99c;
+    }
+    </style>
