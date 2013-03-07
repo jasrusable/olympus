@@ -4,6 +4,7 @@ from mako.template import Template
 from mako.lookup import TemplateLookup
 
 from auth import AuthController, require, member_of, name_is, check_credentials
+from files import handle_upload
 
 import pymongo
 from gridfs import GridFS
@@ -13,7 +14,6 @@ def check_file(audio_file):
         return "No file selected."
     if not audio_file.filename.endswith(".mp3"):
         return "Please select an mp3."
-    return True
 
 class Root(object):
     def __init__(self):
@@ -25,10 +25,10 @@ class Root(object):
     def index(self):
         """Home Page."""
         count = cherrypy.session.get('count', 0) + 1
-        user_songs = self.db.playlists.find({'username': 'avoid3d'})
+        songs = self.db.songs.find({'username': 'joe'})
         template = self.templateLookup.get_template('./index.tmpl')
         return template.render(
-                songs=user_songs,
+                songs=songs,
                 )
 
     @cherrypy.expose
@@ -56,22 +56,14 @@ class Root(object):
             template = self.templateLookup.get_template('./upload.tmpl')
             return template.render(error_msg=error_msg)
 
-        new_file = self.fs.new_file(filename = audio_file.filename)
+        file_id = handle_upload(audio_file, self.fs)
 
-        # CherryPy reads the uploaded file into a temporary file;
-        # myFile.file.read reads from that.
-        size = 0
-        while True:
-            data = audio_file.file.read(8192)
-            if not data:
-                break
-            new_file.write(data)
-
-        new_file.close()
         self.db.queue.insert(
                 {'stage': 'fingerprint',
+                    'username': cherrypy.session['_username'],
                     'priority': 4,
-                    'file_id': new_file._id})
+                    'file_id': file_id})
+
         return self.templateLookup.get_template('./upload.tmpl').render()
 
 root = Root()

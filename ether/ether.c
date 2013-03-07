@@ -167,6 +167,10 @@ int get_fingerprint(gridfile *gfile, const char *filename, char **fingerprint_bu
 
     AVCodecContext *decoder_context = stream->codec;
 
+
+    /* request regular signed 16-bit packed format */
+    decoder_context->request_sample_fmt = AV_SAMPLE_FMT_S16;
+
     AVCodec *decoder = avcodec_find_decoder(decoder_context->codec_id);
 
     avcodec_open2(decoder_context, decoder, NULL);
