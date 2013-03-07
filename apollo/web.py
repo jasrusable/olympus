@@ -8,6 +8,12 @@ from auth import AuthController, require, member_of, name_is, check_credentials
 import pymongo
 from gridfs import GridFS
 
+def check_file(audio_file):
+    if not audio_file or not audio_file.filename:
+        return "No file selected."
+    if not audio_file.filename.endswith(".mp3"):
+        return "Please select an mp3."
+    return True
 
 class Root(object):
     def __init__(self):
@@ -45,25 +51,29 @@ class Root(object):
     @require()
     def upload(self, audio_file=None):
         """Upload a song."""
-        if (audio_file):
-            print("Filename", audio_file.filename)
-            new_file = self.fs.new_file(filename = audio_file.filename)
+        error_msg = check_file(audio_file)
+        if (error_msg):
+            template = self.templateLookup.get_template('./upload.tmpl')
+            return template.render(error_msg=error_msg)
 
-            # CherryPy reads the uploaded file into a temporary file;
-            # myFile.file.read reads from that.
-            size = 0
-            while True:
-                data = audio_file.file.read(8192)
-                if not data:
-                    break
-                new_file.write(data)
+        new_file = self.fs.new_file(filename = audio_file.filename)
 
-            new_file.close()
-            self.db.queue.insert(
-                    {'stage': 'fingerprint',
-                        'priority': 4,
-                        'file_id': new_file._id})
+        # CherryPy reads the uploaded file into a temporary file;
+        # myFile.file.read reads from that.
+        size = 0
+        while True:
+            data = audio_file.file.read(8192)
+            if not data:
+                break
+            new_file.write(data)
+
+        new_file.close()
+        self.db.queue.insert(
+                {'stage': 'fingerprint',
+                    'priority': 4,
+                    'file_id': new_file._id})
         return self.templateLookup.get_template('./upload.tmpl').render()
+
 root = Root()
 
 # Site-wide config, logging...

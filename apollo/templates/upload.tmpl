@@ -1,6 +1,10 @@
 ## upload.tmpl
 <%inherit file="port.tmpl"/>
 <%block name="pane">
+        % if error_msg:
+            <h2> ${error_msg} </h2>
+        % endif
+
         Upload a song. 
         <form action="upload" method="post" enctype="multipart/form-data">
             filename: <input type="file" name="audio_file" /> <br/>
