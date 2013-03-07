@@ -3,11 +3,10 @@ import os
 from mako.template import Template
 from mako.lookup import TemplateLookup
 
-from auth import AuthController, require, member_of, name_is, check_credentials
+from auth import AuthController, require, member_of, name_is
 
 import pymongo
 from gridfs import GridFS
-
 
 class Root(object):
     def __init__(self):
@@ -19,30 +18,22 @@ class Root(object):
     def index(self):
         """Home Page."""
         count = cherrypy.session.get('count', 0) + 1
-        user_songs = self.db.playlists.find({'username': 'avoid3d'})
+        user_songs = self.db.playlists.find({'username': avoid3d})
         template = self.templateLookup.get_template('./index.tmpl')
         return template.render(
                 songs=user_songs,
                 )
 
     @cherrypy.expose
-    def login(self, username=None, password=None, from_page="/"):
+    def login(self, username=None):
         """Login Page."""
-        if username is None or password is None:
-            template = self.templateLookup.get_template('./login.tmpl')
-            return template.render(from_page=from_page)
+        if username:
+            cherrypy.session['username'] = username
 
-        error_msg = check_credentials(username, password)
-        if error_msg:
-            template = self.templateLookup.get_template('./login.tmpl')
-            return template.render(from_page=from_page, error_msg=error_msg)
-        else:
-            # successful auth
-            cherrypy.session['_username'] = cherrypy.request.login = username
-            raise cherrypy.HTTPRedirect(from_page)
+        template = self.templateLookup.get_template('./login.tmpl')
+        return template.render(username=username)
 
     @cherrypy.expose
-    @require()
     def upload(self, audio_file=None):
         """Upload a song."""
         if (audio_file):
@@ -71,7 +62,6 @@ cherrypy.config.update({'environment': 'production',
                         'log.error_file': 'site.log',
                         'log.screen': True,
                         'tools.sessions.on': True,
-                        'tools.auth.on': True,
                         'tools.sessions.timeout': 60,})
 
 current_dir = os.path.dirname(os.path.abspath(__file__))

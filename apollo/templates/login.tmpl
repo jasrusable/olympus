@@ -2,12 +2,18 @@
 <%inherit file="port.tmpl"/>
 
 <%block name="pane">
+    % if error_msg:
+        <h2> ${error_msg} </h2>
+    % endif
+
     % if username:
         <p> Welcome ${username} </p>
     % else:
         <p>Enter login details</p>
         <form action="login" method="post">
+            <input type="hidden" name="from_page" value="${from_page}" />
             username: <input type="text" name="username"/> </br>
+            password: <input type="password" name="password" /></br>
             <input type="submit"/>
         </form>
     % endif
