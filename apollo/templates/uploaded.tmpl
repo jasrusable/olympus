@@ -1,0 +1,7 @@
+## index.tmpl
+<%inherit file="port.tmpl"/>
+
+<%block name="pane">
+    Songs uploaded by ${session['_username']}.
+    <%include file="playlist.tmpl"/>
+</%block>

@@ -1,0 +1,14 @@
+    <table>
+        <tr>
+            <th> id </th>
+            <th> Title </th>
+            <th> music brainz id </th>
+        <tr>
+            % for song in songs:
+            <tr>
+                <td> ${song[0]}</td>
+                <td> <a href="#">${song[1]}</a></td>
+                <td> ${song[2]}</td>
+            <tr>
+            % endfor
+    </table>
