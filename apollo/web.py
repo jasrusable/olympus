@@ -15,9 +15,22 @@ class Root(object):
     @cherrypy.expose
     def index(self):
         """Home Page."""
-        songs = self.db.songs.find()
-        print(songs)
-        return self.templateLookup.get_template('./index.tmpl').render(songs=songs)
+        count = cherrypy.session.get('count', 0) + 1
+        user_songs = self.db.playlists.find({'username': avoid3d})
+        print user_songs
+        template = self.templateLookup.get_template('./index.tmpl')
+        return template.render(
+                songs=user_songs,
+                )
+
+    @cherrypy.expose
+    def login(self, username=None):
+        """Login Page."""
+        if username:
+            cherrypy.session['username'] = username
+
+        template = self.templateLookup.get_template('./login.tmpl')
+        return template.render(username=username)
 
     @cherrypy.expose
     def upload(self, audio_file=None):
@@ -36,19 +49,19 @@ class Root(object):
                 new_file.write(data)
 
             new_file.close()
-            self.db.queue.insert({'stage': 'fingerprint', 'priority': 4, 'file_id': new_file._id})
-            print("hello world", new_file._id)
-            print(self.fs.list())
+            self.db.queue.insert(
+                    {'stage': 'fingerprint',
+                        'priority': 4,
+                        'file_id': new_file._id})
         return self.templateLookup.get_template('./upload.tmpl').render()
-
-
 root = Root()
-
 
 # Site-wide config, logging...
 cherrypy.config.update({'environment': 'production',
                         'log.error_file': 'site.log',
-                        'log.screen': True})
+                        'log.screen': True,
+                        'tools.sessions.on': True,
+                        'tools.sessions.timeout': 60,})
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 

@@ -14,7 +14,8 @@ while(True):
         new=True
     )
     if (queue_entry):
-        audio_file = db.fs.files.find_one({'_id': ObjectId(queue_entry['file_id'])})
+        audio_file = db.fs.files.find_one(
+                '_id': ObjectId(queue_entry['file_id'])})
         fingerprint = audio_file['fingerprint']
         duration = audio_file['duration']
 
@@ -22,4 +23,6 @@ while(True):
         music_brainz_id = results[0]['recordings'][0]['id']
         title = results[0]['recordings'][0]['title']
 
-        db.songs.insert({'music_brainz_id': music_brainz_id, 'music_brainz_title': title})
+        db.songs.insert(
+                {'music_brainz_id': music_brainz_id,
+                    'music_brainz_title': title})

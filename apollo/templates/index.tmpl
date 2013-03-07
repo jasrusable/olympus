@@ -1,33 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <%include file="style.css"/>
-</head>
-<body>
-<div id="wrap">
-    <div id="controls">Controls Go Here</div>
-    <div id="sidebar">
-        Navigation
-        <ul>
-            <li><a href="/">Playlist</a></li>
-            <li><a href="/upload">Upload</a></li>
-        </ul>
-    </div>
-    <div id="main">
-        Playlist
-        <table>
-            <tr>
-                <th> Title </th>
-            <tr>
-                % for song in songs:
-                <tr>
-                    <td> <a href="#">${song['music_brainz_title']}</a></td>
-                <tr>
-                % endfor
-        </table>
+## index.tmpl
+<%inherit file="port.tmpl"/>
 
-
-    </div>
-</div>
-</body>
-</html>
+<%block name="pane">
+    Playlist
+    <table>
+        <tr>
+            <th> Title </th>
+        <tr>
+            % for song in songs:
+            <tr>
+                <td> <a href="#">${song['music_brainz_title']}</a></td>
+            <tr>
+            % endfor
+    </table>
+</%block>

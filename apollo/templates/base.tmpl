@@ -1,0 +1,22 @@
+## base.tmpl
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%include file="style.css"/>
+    </head>
+    <body>
+        <div id="wrap">
+            <div id="controls">
+                <%block name="controls"/>
+            </div>
+
+            <div id="sidebar">
+            <%block name="sidebar"/>
+            </div>
+
+            <div id="main">
+                <%block name="pane"/>
+            </div>
+        </div>
+    </body>
+</html>

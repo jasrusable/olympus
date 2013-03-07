@@ -1,0 +1,567 @@
+[06/Mar/2013:23:40:17] ENGINE Listening for SIGTERM.
+[06/Mar/2013:23:40:17] ENGINE Listening for SIGHUP.
+[06/Mar/2013:23:40:17] ENGINE Listening for SIGUSR1.
+[06/Mar/2013:23:40:17] ENGINE Bus STARTING
+[06/Mar/2013:23:40:17] ENGINE Started monitor thread '_TimeoutMonitor'.
+[06/Mar/2013:23:40:17] ENGINE Serving on 127.0.0.1:8080
+[06/Mar/2013:23:40:17] ENGINE Bus STARTED
+[06/Mar/2013:23:40:38] ENGINE Keyboard Interrupt: shutting down bus
+[06/Mar/2013:23:40:38] ENGINE Bus STOPPING
+[06/Mar/2013:23:53:06] ENGINE Listening for SIGTERM.
+[06/Mar/2013:23:53:06] ENGINE Listening for SIGUSR1.
+[06/Mar/2013:23:53:06] ENGINE Listening for SIGHUP.
+[06/Mar/2013:23:53:06] ENGINE Bus STARTING
+[06/Mar/2013:23:53:06] ENGINE Started monitor thread '_TimeoutMonitor'.
+[06/Mar/2013:23:53:07] ENGINE Serving on 127.0.0.1:8080
+[06/Mar/2013:23:53:07] ENGINE Bus STARTED
+[06/Mar/2013:23:53:12] HTTP Traceback (most recent call last):
+  File "/usr/lib/python3.3/site-packages/mako/lookup.py", line 232, in get_template
+    return self._check(uri, self._collection[uri])
+KeyError: './index.tmpl'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.3/site-packages/cherrypy/_cprequest.py", line 656, in respond
+    response.body = self.handler()
+  File "/usr/lib/python3.3/site-packages/cherrypy/lib/encoding.py", line 188, in __call__
+    self.body = self.oldhandler(*args, **kwargs)
+  File "/usr/lib/python3.3/site-packages/cherrypy/_cpdispatch.py", line 34, in __call__
+    return self.callable(*self.args, **self.kwargs)
+  File "web.py", line 20, in index
+    template = self.templateLookup.get_template('./index.tmpl')
+  File "/usr/lib/python3.3/site-packages/mako/lookup.py", line 240, in get_template
+    return self._load(srcfile, uri)
+  File "/usr/lib/python3.3/site-packages/mako/lookup.py", line 306, in _load
+    **self.template_args)
+  File "/usr/lib/python3.3/site-packages/mako/template.py", line 291, in __init__
+    module = self._compile_from_file(path, filename)
+  File "/usr/lib/python3.3/site-packages/mako/template.py", line 368, in _compile_from_file
+    filename)
+  File "/usr/lib/python3.3/site-packages/mako/template.py", line 615, in _compile_text
+    generate_magic_comment=template.disable_unicode)
+  File "/usr/lib/python3.3/site-packages/mako/template.py", line 597, in _compile
+    node = lexer.parse()
+  File "/usr/lib/python3.3/site-packages/mako/lexer.py", line 253, in parse
+    **self.exception_kwargs)
+mako.exceptions.SyntaxException: Unclosed tag: <%block> in file 'templates/index.tmpl' at line: 33 char: 1
+
+[07/Mar/2013:00:01:21] HTTP Traceback (most recent call last):
+  File "/usr/lib/python3.3/site-packages/cherrypy/_cprequest.py", line 656, in respond
+    response.body = self.handler()
+  File "/usr/lib/python3.3/site-packages/cherrypy/lib/encoding.py", line 188, in __call__
+    self.body = self.oldhandler(*args, **kwargs)
+  File "/usr/lib/python3.3/site-packages/cherrypy/_cpdispatch.py", line 34, in __call__
+    return self.callable(*self.args, **self.kwargs)
+  File "web.py", line 44, in upload
+    return self.templateLookup.get_template('./upload.tmpl').render()
+  File "/usr/lib/python3.3/site-packages/mako/lookup.py", line 232, in get_template
+    return self._check(uri, self._collection[uri])
+  File "/usr/lib/python3.3/site-packages/mako/lookup.py", line 326, in _check
+    return self._load(template.filename, uri)
+  File "/usr/lib/python3.3/site-packages/mako/lookup.py", line 306, in _load
+    **self.template_args)
+  File "/usr/lib/python3.3/site-packages/mako/template.py", line 291, in __init__
+    module = self._compile_from_file(path, filename)
+  File "/usr/lib/python3.3/site-packages/mako/template.py", line 368, in _compile_from_file
+    filename)
+  File "/usr/lib/python3.3/site-packages/mako/template.py", line 615, in _compile_text
+    generate_magic_comment=template.disable_unicode)
+  File "/usr/lib/python3.3/site-packages/mako/template.py", line 597, in _compile
+    node = lexer.parse()
+  File "/usr/lib/python3.3/site-packages/mako/lexer.py", line 253, in parse
+    **self.exception_kwargs)
+mako.exceptions.SyntaxException: Unclosed tag: <%inherit> in file 'templates/upload.tmpl' at line: 18 char: 1
+
+[07/Mar/2013:00:01:39] HTTP Traceback (most recent call last):
+  File "/usr/lib/python3.3/site-packages/mako/lookup.py", line 232, in get_template
+    return self._check(uri, self._collection[uri])
+KeyError: './upload.tmpl'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.3/site-packages/cherrypy/_cprequest.py", line 656, in respond
+    response.body = self.handler()
+  File "/usr/lib/python3.3/site-packages/cherrypy/lib/encoding.py", line 188, in __call__
+    self.body = self.oldhandler(*args, **kwargs)
+  File "/usr/lib/python3.3/site-packages/cherrypy/_cpdispatch.py", line 34, in __call__
+    return self.callable(*self.args, **self.kwargs)
+  File "web.py", line 44, in upload
+    return self.templateLookup.get_template('./upload.tmpl').render()
+  File "/usr/lib/python3.3/site-packages/mako/lookup.py", line 240, in get_template
+    return self._load(srcfile, uri)
+  File "/usr/lib/python3.3/site-packages/mako/lookup.py", line 306, in _load
+    **self.template_args)
+  File "/usr/lib/python3.3/site-packages/mako/template.py", line 291, in __init__
+    module = self._compile_from_file(path, filename)
+  File "/usr/lib/python3.3/site-packages/mako/template.py", line 368, in _compile_from_file
+    filename)
+  File "/usr/lib/python3.3/site-packages/mako/template.py", line 615, in _compile_text
+    generate_magic_comment=template.disable_unicode)
+  File "/usr/lib/python3.3/site-packages/mako/template.py", line 597, in _compile
+    node = lexer.parse()
+  File "/usr/lib/python3.3/site-packages/mako/lexer.py", line 253, in parse
+    **self.exception_kwargs)
+mako.exceptions.SyntaxException: Unclosed tag: <%inherit> in file 'templates/upload.tmpl' at line: 18 char: 1
+
+[07/Mar/2013:00:04:59] HTTP Traceback (most recent call last):
+  File "/usr/lib/python3.3/site-packages/mako/lookup.py", line 232, in get_template
+    return self._check(uri, self._collection[uri])
+KeyError: './navigation.tmpl'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.3/site-packages/mako/runtime.py", line 733, in _lookup_template
+    return lookup.get_template(uri)
+  File "/usr/lib/python3.3/site-packages/mako/lookup.py", line 243, in get_template
+    "Cant locate template for uri %r" % uri)
+mako.exceptions.TopLevelLookupException: Cant locate template for uri './navigation.tmpl'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.3/site-packages/cherrypy/_cprequest.py", line 656, in respond
+    response.body = self.handler()
+  File "/usr/lib/python3.3/site-packages/cherrypy/lib/encoding.py", line 188, in __call__
+    self.body = self.oldhandler(*args, **kwargs)
+  File "/usr/lib/python3.3/site-packages/cherrypy/_cpdispatch.py", line 34, in __call__
+    return self.callable(*self.args, **self.kwargs)
+  File "web.py", line 21, in index
+    return template.render(songs=songs)
+  File "/usr/lib/python3.3/site-packages/mako/template.py", line 412, in render
+    return runtime._render(self, self.callable_, args, data)
+  File "/usr/lib/python3.3/site-packages/mako/runtime.py", line 767, in _render
+    **_kwargs_for_callable(callable_, data))
+  File "/usr/lib/python3.3/site-packages/mako/runtime.py", line 799, in _render_context
+    _exec_template(inherit, lclcontext, args=args, kwargs=kwargs)
+  File "/usr/lib/python3.3/site-packages/mako/runtime.py", line 825, in _exec_template
+    callable_(context, *args, **kwargs)
+  File "__base_tmpl", line 37, in render_body
+  File "__port_tmpl", line 78, in render_sidebar
+  File "/usr/lib/python3.3/site-packages/mako/runtime.py", line 690, in _include_file
+    template = _lookup_template(context, uri, calling_uri)
+  File "/usr/lib/python3.3/site-packages/mako/runtime.py", line 735, in _lookup_template
+    raise exceptions.TemplateLookupException(str(e))
+mako.exceptions.TemplateLookupException: Cant locate template for uri './navigation.tmpl'
+
+[07/Mar/2013:00:09:39] ENGINE Listening for SIGHUP.
+[07/Mar/2013:00:09:39] ENGINE Listening for SIGTERM.
+[07/Mar/2013:00:09:39] ENGINE Listening for SIGUSR1.
+[07/Mar/2013:00:09:39] ENGINE Bus STARTING
+[07/Mar/2013:00:09:39] ENGINE Started monitor thread '_TimeoutMonitor'.
+[07/Mar/2013:00:09:39] ENGINE Serving on 127.0.0.1:8080
+[07/Mar/2013:00:09:39] ENGINE Bus STARTED
+[07/Mar/2013:00:12:39] HTTP Traceback (most recent call last):
+  File "/usr/lib/python3.3/site-packages/mako/pyparser.py", line 49, in parse
+    return _ast_util.parse(code, '<unknown>', mode)
+  File "/usr/lib/python3.3/site-packages/mako/_ast_util.py", line 84, in parse
+    return compile(expr, filename, mode, PyCF_ONLY_AST)
+  File "<unknown>", line 1
+    if $(username):pass
+       ^
+SyntaxError: invalid syntax
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.3/site-packages/cherrypy/_cprequest.py", line 656, in respond
+    response.body = self.handler()
+  File "/usr/lib/python3.3/site-packages/cherrypy/lib/encoding.py", line 188, in __call__
+    self.body = self.oldhandler(*args, **kwargs)
+  File "/usr/lib/python3.3/site-packages/cherrypy/_cpdispatch.py", line 34, in __call__
+    return self.callable(*self.args, **self.kwargs)
+  File "web.py", line 26, in login
+  File "/usr/lib/python3.3/site-packages/mako/lookup.py", line 232, in get_template
+    return self._check(uri, self._collection[uri])
+  File "/usr/lib/python3.3/site-packages/mako/lookup.py", line 326, in _check
+    return self._load(template.filename, uri)
+  File "/usr/lib/python3.3/site-packages/mako/lookup.py", line 306, in _load
+    **self.template_args)
+  File "/usr/lib/python3.3/site-packages/mako/template.py", line 291, in __init__
+    module = self._compile_from_file(path, filename)
+  File "/usr/lib/python3.3/site-packages/mako/template.py", line 368, in _compile_from_file
+    filename)
+  File "/usr/lib/python3.3/site-packages/mako/template.py", line 615, in _compile_text
+    generate_magic_comment=template.disable_unicode)
+  File "/usr/lib/python3.3/site-packages/mako/template.py", line 597, in _compile
+    node = lexer.parse()
+  File "/usr/lib/python3.3/site-packages/mako/lexer.py", line 233, in parse
+    if self.match_control_line():
+  File "/usr/lib/python3.3/site-packages/mako/lexer.py", line 427, in match_control_line
+    self.append_node(parsetree.ControlLine, keyword, isend, text)
+  File "/usr/lib/python3.3/site-packages/mako/lexer.py", line 131, in append_node
+    node = nodecls(*args, **kwargs)
+  File "/usr/lib/python3.3/site-packages/mako/parsetree.py", line 77, in __init__
+    code = ast.PythonFragment(text, **self.exception_kwargs)
+  File "/usr/lib/python3.3/site-packages/mako/ast.py", line 96, in __init__
+    super(PythonFragment, self).__init__(code, **exception_kwargs)
+  File "/usr/lib/python3.3/site-packages/mako/ast.py", line 37, in __init__
+    expr = pyparser.parse(code.lstrip(), "exec", **exception_kwargs)
+  File "/usr/lib/python3.3/site-packages/mako/pyparser.py", line 60, in parse
+    ), **exception_kwargs)
+mako.exceptions.SyntaxException: (SyntaxError) invalid syntax (<unknown>, line 1) ('if $(username):pass') in file 'templates/login.tmpl' at line: 5 char: 1
+
+[07/Mar/2013:00:13:30] ENGINE Listening for SIGHUP.
+[07/Mar/2013:00:13:30] ENGINE Listening for SIGTERM.
+[07/Mar/2013:00:13:30] ENGINE Listening for SIGUSR1.
+[07/Mar/2013:00:13:30] ENGINE Bus STARTING
+[07/Mar/2013:00:13:30] ENGINE Started monitor thread '_TimeoutMonitor'.
+[07/Mar/2013:00:13:30] ENGINE Serving on 127.0.0.1:8080
+[07/Mar/2013:00:13:30] ENGINE Bus STARTED
+[07/Mar/2013:00:13:32] HTTP Traceback (most recent call last):
+  File "/usr/lib/python3.3/site-packages/cherrypy/_cprequest.py", line 656, in respond
+    response.body = self.handler()
+  File "/usr/lib/python3.3/site-packages/cherrypy/lib/encoding.py", line 188, in __call__
+    self.body = self.oldhandler(*args, **kwargs)
+  File "/usr/lib/python3.3/site-packages/cherrypy/_cpdispatch.py", line 34, in __call__
+    return self.callable(*self.args, **self.kwargs)
+  File "web.py", line 28, in login
+    return template.render(username)
+  File "/usr/lib/python3.3/site-packages/mako/template.py", line 412, in render
+    return runtime._render(self, self.callable_, args, data)
+  File "/usr/lib/python3.3/site-packages/mako/runtime.py", line 767, in _render
+    **_kwargs_for_callable(callable_, data))
+  File "/usr/lib/python3.3/site-packages/mako/runtime.py", line 799, in _render_context
+    _exec_template(inherit, lclcontext, args=args, kwargs=kwargs)
+  File "/usr/lib/python3.3/site-packages/mako/runtime.py", line 825, in _exec_template
+    callable_(context, *args, **kwargs)
+TypeError: render_body() takes 1 positional argument but 2 were given
+
+[07/Mar/2013:00:13:48] HTTP Traceback (most recent call last):
+  File "/usr/lib/python3.3/site-packages/cherrypy/_cprequest.py", line 656, in respond
+    response.body = self.handler()
+  File "/usr/lib/python3.3/site-packages/cherrypy/lib/encoding.py", line 188, in __call__
+    self.body = self.oldhandler(*args, **kwargs)
+  File "/usr/lib/python3.3/site-packages/cherrypy/_cpdispatch.py", line 34, in __call__
+    return self.callable(*self.args, **self.kwargs)
+  File "web.py", line 28, in login
+    return template.render(username)
+  File "/usr/lib/python3.3/site-packages/mako/template.py", line 412, in render
+    return runtime._render(self, self.callable_, args, data)
+  File "/usr/lib/python3.3/site-packages/mako/runtime.py", line 767, in _render
+    **_kwargs_for_callable(callable_, data))
+  File "/usr/lib/python3.3/site-packages/mako/runtime.py", line 799, in _render_context
+    _exec_template(inherit, lclcontext, args=args, kwargs=kwargs)
+  File "/usr/lib/python3.3/site-packages/mako/runtime.py", line 825, in _exec_template
+    callable_(context, *args, **kwargs)
+TypeError: render_body() takes 1 positional argument but 2 were given
+
+[07/Mar/2013:00:14:18] HTTP Traceback (most recent call last):
+  File "/usr/lib/python3.3/site-packages/cherrypy/_cprequest.py", line 656, in respond
+    response.body = self.handler()
+  File "/usr/lib/python3.3/site-packages/cherrypy/lib/encoding.py", line 188, in __call__
+    self.body = self.oldhandler(*args, **kwargs)
+  File "/usr/lib/python3.3/site-packages/cherrypy/_cpdispatch.py", line 34, in __call__
+    return self.callable(*self.args, **self.kwargs)
+  File "web.py", line 28, in login
+    return template.render(username)
+  File "/usr/lib/python3.3/site-packages/mako/template.py", line 412, in render
+    return runtime._render(self, self.callable_, args, data)
+  File "/usr/lib/python3.3/site-packages/mako/runtime.py", line 767, in _render
+    **_kwargs_for_callable(callable_, data))
+  File "/usr/lib/python3.3/site-packages/mako/runtime.py", line 799, in _render_context
+    _exec_template(inherit, lclcontext, args=args, kwargs=kwargs)
+  File "/usr/lib/python3.3/site-packages/mako/runtime.py", line 825, in _exec_template
+    callable_(context, *args, **kwargs)
+TypeError: render_body() takes 1 positional argument but 2 were given
+
+[07/Mar/2013:00:14:48] HTTP Traceback (most recent call last):
+  File "/usr/lib/python3.3/site-packages/cherrypy/_cprequest.py", line 656, in respond
+    response.body = self.handler()
+  File "/usr/lib/python3.3/site-packages/cherrypy/lib/encoding.py", line 188, in __call__
+    self.body = self.oldhandler(*args, **kwargs)
+  File "/usr/lib/python3.3/site-packages/cherrypy/_cpdispatch.py", line 34, in __call__
+    return self.callable(*self.args, **self.kwargs)
+  File "web.py", line 28, in login
+    return template.render(username=username)
+  File "/usr/lib/python3.3/site-packages/mako/template.py", line 412, in render
+    return runtime._render(self, self.callable_, args, data)
+  File "/usr/lib/python3.3/site-packages/mako/runtime.py", line 767, in _render
+    **_kwargs_for_callable(callable_, data))
+  File "/usr/lib/python3.3/site-packages/mako/runtime.py", line 799, in _render_context
+    _exec_template(inherit, lclcontext, args=args, kwargs=kwargs)
+  File "/usr/lib/python3.3/site-packages/mako/runtime.py", line 825, in _exec_template
+    callable_(context, *args, **kwargs)
+TypeError: render_body() takes 1 positional argument but 2 were given
+
+[07/Mar/2013:00:14:52] ENGINE Listening for SIGHUP.
+[07/Mar/2013:00:14:52] ENGINE Listening for SIGTERM.
+[07/Mar/2013:00:14:52] ENGINE Listening for SIGUSR1.
+[07/Mar/2013:00:14:52] ENGINE Bus STARTING
+[07/Mar/2013:00:14:52] ENGINE Started monitor thread '_TimeoutMonitor'.
+[07/Mar/2013:00:14:53] ENGINE Serving on 127.0.0.1:8080
+[07/Mar/2013:00:14:53] ENGINE Bus STARTED
+[07/Mar/2013:00:18:16] ENGINE Listening for SIGTERM.
+[07/Mar/2013:00:18:16] ENGINE Listening for SIGHUP.
+[07/Mar/2013:00:18:16] ENGINE Listening for SIGUSR1.
+[07/Mar/2013:00:18:16] ENGINE Bus STARTING
+[07/Mar/2013:00:18:16] ENGINE Started monitor thread '_TimeoutMonitor'.
+[07/Mar/2013:00:18:16] ENGINE Serving on 127.0.0.1:8080
+[07/Mar/2013:00:18:16] ENGINE Bus STARTED
+[07/Mar/2013:00:21:24] ENGINE Listening for SIGHUP.
+[07/Mar/2013:00:21:24] ENGINE Listening for SIGTERM.
+[07/Mar/2013:00:21:24] ENGINE Listening for SIGUSR1.
+[07/Mar/2013:00:21:24] ENGINE Bus STARTING
+[07/Mar/2013:00:21:24] ENGINE Started monitor thread '_TimeoutMonitor'.
+[07/Mar/2013:00:21:24] ENGINE Serving on 127.0.0.1:8080
+[07/Mar/2013:00:21:24] ENGINE Bus STARTED
+[07/Mar/2013:00:21:46] ENGINE Listening for SIGHUP.
+[07/Mar/2013:00:21:46] ENGINE Listening for SIGTERM.
+[07/Mar/2013:00:21:46] ENGINE Listening for SIGUSR1.
+[07/Mar/2013:00:21:46] ENGINE Bus STARTING
+[07/Mar/2013:00:21:46] ENGINE Started monitor thread '_TimeoutMonitor'.
+[07/Mar/2013:00:21:46] ENGINE Serving on 127.0.0.1:8080
+[07/Mar/2013:00:21:46] ENGINE Bus STARTED
+[07/Mar/2013:00:21:54] ENGINE Started monitor thread 'Session cleanup'.
+[07/Mar/2013:00:24:04] ENGINE Listening for SIGHUP.
+[07/Mar/2013:00:24:04] ENGINE Listening for SIGUSR1.
+[07/Mar/2013:00:24:04] ENGINE Listening for SIGTERM.
+[07/Mar/2013:00:24:04] ENGINE Bus STARTING
+[07/Mar/2013:00:24:04] ENGINE Started monitor thread '_TimeoutMonitor'.
+[07/Mar/2013:00:24:04] ENGINE Serving on 127.0.0.1:8080
+[07/Mar/2013:00:24:04] ENGINE Bus STARTED
+[07/Mar/2013:00:24:05] ENGINE Started monitor thread 'Session cleanup'.
+[07/Mar/2013:00:24:05] HTTP Traceback (most recent call last):
+  File "/usr/lib/python3.3/site-packages/cherrypy/_cprequest.py", line 656, in respond
+    response.body = self.handler()
+  File "/usr/lib/python3.3/site-packages/cherrypy/lib/encoding.py", line 188, in __call__
+    self.body = self.oldhandler(*args, **kwargs)
+  File "/usr/lib/python3.3/site-packages/cherrypy/_cpdispatch.py", line 34, in __call__
+    return self.callable(*self.args, **self.kwargs)
+  File "web.py", line 24, in index
+    username = session.get('username', 'anon'))
+NameError: global name 'session' is not defined
+
+[07/Mar/2013:00:24:24] ENGINE Listening for SIGUSR1.
+[07/Mar/2013:00:24:24] ENGINE Listening for SIGTERM.
+[07/Mar/2013:00:24:24] ENGINE Listening for SIGHUP.
+[07/Mar/2013:00:24:24] ENGINE Bus STARTING
+[07/Mar/2013:00:24:24] ENGINE Started monitor thread '_TimeoutMonitor'.
+[07/Mar/2013:00:24:24] ENGINE Serving on 127.0.0.1:8080
+[07/Mar/2013:00:24:24] ENGINE Bus STARTED
+[07/Mar/2013:00:24:25] ENGINE Started monitor thread 'Session cleanup'.
+[07/Mar/2013:00:25:10] HTTP Traceback (most recent call last):
+  File "/usr/lib/python3.3/site-packages/cherrypy/_cprequest.py", line 656, in respond
+    response.body = self.handler()
+  File "/usr/lib/python3.3/site-packages/cherrypy/lib/encoding.py", line 188, in __call__
+    self.body = self.oldhandler(*args, **kwargs)
+  File "/usr/lib/python3.3/site-packages/cherrypy/_cpdispatch.py", line 34, in __call__
+    return self.callable(*self.args, **self.kwargs)
+  File "web.py", line 24, in index
+    username = cherrypy.session.get('username', 'anon'))
+  File "/usr/lib/python3.3/site-packages/mako/template.py", line 412, in render
+    return runtime._render(self, self.callable_, args, data)
+  File "/usr/lib/python3.3/site-packages/mako/runtime.py", line 767, in _render
+    **_kwargs_for_callable(callable_, data))
+  File "/usr/lib/python3.3/site-packages/mako/runtime.py", line 798, in _render_context
+    (inherit, lclcontext) = _populate_self_namespace(context, tmpl)
+  File "/usr/lib/python3.3/site-packages/mako/runtime.py", line 744, in _populate_self_namespace
+    ret = template.module._mako_inherit(template, context)
+  File "__index_tmpl", line 24, in _mako_inherit
+  File "/usr/lib/python3.3/site-packages/mako/runtime.py", line 703, in _inherit_from
+    template = _lookup_template(context, uri, calling_uri)
+  File "/usr/lib/python3.3/site-packages/mako/runtime.py", line 733, in _lookup_template
+    return lookup.get_template(uri)
+  File "/usr/lib/python3.3/site-packages/mako/lookup.py", line 232, in get_template
+    return self._check(uri, self._collection[uri])
+  File "/usr/lib/python3.3/site-packages/mako/lookup.py", line 326, in _check
+    return self._load(template.filename, uri)
+  File "/usr/lib/python3.3/site-packages/mako/lookup.py", line 306, in _load
+    **self.template_args)
+  File "/usr/lib/python3.3/site-packages/mako/template.py", line 291, in __init__
+    module = self._compile_from_file(path, filename)
+  File "/usr/lib/python3.3/site-packages/mako/template.py", line 368, in _compile_from_file
+    filename)
+  File "/usr/lib/python3.3/site-packages/mako/template.py", line 615, in _compile_text
+    generate_magic_comment=template.disable_unicode)
+  File "/usr/lib/python3.3/site-packages/mako/template.py", line 597, in _compile
+    node = lexer.parse()
+  File "/usr/lib/python3.3/site-packages/mako/lexer.py", line 233, in parse
+    if self.match_control_line():
+  File "/usr/lib/python3.3/site-packages/mako/lexer.py", line 427, in match_control_line
+    self.append_node(parsetree.ControlLine, keyword, isend, text)
+  File "/usr/lib/python3.3/site-packages/mako/lexer.py", line 131, in append_node
+    node = nodecls(*args, **kwargs)
+  File "/usr/lib/python3.3/site-packages/mako/parsetree.py", line 77, in __init__
+    code = ast.PythonFragment(text, **self.exception_kwargs)
+  File "/usr/lib/python3.3/site-packages/mako/ast.py", line 78, in __init__
+    code, **exception_kwargs)
+mako.exceptions.CompileException: Fragment 'if username' is not a partial control statement in file 'templates/port.tmpl' at line: 5 char: 1
+
+[07/Mar/2013:00:25:21] ENGINE Listening for SIGUSR1.
+[07/Mar/2013:00:25:21] ENGINE Listening for SIGTERM.
+[07/Mar/2013:00:25:21] ENGINE Listening for SIGHUP.
+[07/Mar/2013:00:25:21] ENGINE Bus STARTING
+[07/Mar/2013:00:25:21] ENGINE Started monitor thread '_TimeoutMonitor'.
+[07/Mar/2013:00:25:21] ENGINE Serving on 127.0.0.1:8080
+[07/Mar/2013:00:25:21] ENGINE Bus STARTED
+[07/Mar/2013:00:25:22] ENGINE Started monitor thread 'Session cleanup'.
+[07/Mar/2013:00:25:42] ENGINE Listening for SIGTERM.
+[07/Mar/2013:00:25:42] ENGINE Listening for SIGHUP.
+[07/Mar/2013:00:25:42] ENGINE Listening for SIGUSR1.
+[07/Mar/2013:00:25:42] ENGINE Bus STARTING
+[07/Mar/2013:00:25:42] ENGINE Started monitor thread '_TimeoutMonitor'.
+[07/Mar/2013:00:25:42] ENGINE Serving on 127.0.0.1:8080
+[07/Mar/2013:00:25:42] ENGINE Bus STARTED
+[07/Mar/2013:00:25:44] ENGINE Started monitor thread 'Session cleanup'.
+[07/Mar/2013:00:27:11] HTTP Traceback (most recent call last):
+  File "/usr/lib/python3.3/site-packages/mako/pyparser.py", line 49, in parse
+    return _ast_util.parse(code, '<unknown>', mode)
+  File "/usr/lib/python3.3/site-packages/mako/_ast_util.py", line 84, in parse
+    return compile(expr, filename, mode, PyCF_ONLY_AST)
+  File "<unknown>", line 1
+    Hello cherrypy.session.get('username', 'anon')
+                 ^
+SyntaxError: invalid syntax
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.3/site-packages/cherrypy/_cprequest.py", line 656, in respond
+    response.body = self.handler()
+  File "/usr/lib/python3.3/site-packages/cherrypy/lib/encoding.py", line 188, in __call__
+    self.body = self.oldhandler(*args, **kwargs)
+  File "/usr/lib/python3.3/site-packages/cherrypy/_cpdispatch.py", line 34, in __call__
+    return self.callable(*self.args, **self.kwargs)
+  File "web.py", line 24, in index
+    )
+  File "/usr/lib/python3.3/site-packages/mako/template.py", line 412, in render
+    return runtime._render(self, self.callable_, args, data)
+  File "/usr/lib/python3.3/site-packages/mako/runtime.py", line 767, in _render
+    **_kwargs_for_callable(callable_, data))
+  File "/usr/lib/python3.3/site-packages/mako/runtime.py", line 798, in _render_context
+    (inherit, lclcontext) = _populate_self_namespace(context, tmpl)
+  File "/usr/lib/python3.3/site-packages/mako/runtime.py", line 744, in _populate_self_namespace
+    ret = template.module._mako_inherit(template, context)
+  File "__index_tmpl", line 24, in _mako_inherit
+  File "/usr/lib/python3.3/site-packages/mako/runtime.py", line 703, in _inherit_from
+    template = _lookup_template(context, uri, calling_uri)
+  File "/usr/lib/python3.3/site-packages/mako/runtime.py", line 733, in _lookup_template
+    return lookup.get_template(uri)
+  File "/usr/lib/python3.3/site-packages/mako/lookup.py", line 232, in get_template
+    return self._check(uri, self._collection[uri])
+  File "/usr/lib/python3.3/site-packages/mako/lookup.py", line 326, in _check
+    return self._load(template.filename, uri)
+  File "/usr/lib/python3.3/site-packages/mako/lookup.py", line 306, in _load
+    **self.template_args)
+  File "/usr/lib/python3.3/site-packages/mako/template.py", line 291, in __init__
+    module = self._compile_from_file(path, filename)
+  File "/usr/lib/python3.3/site-packages/mako/template.py", line 368, in _compile_from_file
+    filename)
+  File "/usr/lib/python3.3/site-packages/mako/template.py", line 615, in _compile_text
+    generate_magic_comment=template.disable_unicode)
+  File "/usr/lib/python3.3/site-packages/mako/template.py", line 597, in _compile
+    node = lexer.parse()
+  File "/usr/lib/python3.3/site-packages/mako/lexer.py", line 231, in parse
+    if self.match_expression():
+  File "/usr/lib/python3.3/site-packages/mako/lexer.py", line 394, in match_expression
+    lineno=line, pos=pos)
+  File "/usr/lib/python3.3/site-packages/mako/lexer.py", line 131, in append_node
+    node = nodecls(*args, **kwargs)
+  File "/usr/lib/python3.3/site-packages/mako/parsetree.py", line 180, in __init__
+    self.code = ast.PythonCode(text, **self.exception_kwargs)
+  File "/usr/lib/python3.3/site-packages/mako/ast.py", line 37, in __init__
+    expr = pyparser.parse(code.lstrip(), "exec", **exception_kwargs)
+  File "/usr/lib/python3.3/site-packages/mako/pyparser.py", line 60, in parse
+    ), **exception_kwargs)
+mako.exceptions.SyntaxException: (SyntaxError) invalid syntax (<unknown>, line 1) ("Hello cherrypy.session.get('username', 'anon')") in file 'templates/port.tmpl' at line: 5 char: 5
+
+[07/Mar/2013:00:27:39] HTTP Traceback (most recent call last):
+  File "/usr/lib/python3.3/site-packages/mako/pyparser.py", line 49, in parse
+    return _ast_util.parse(code, '<unknown>', mode)
+  File "/usr/lib/python3.3/site-packages/mako/_ast_util.py", line 84, in parse
+    return compile(expr, filename, mode, PyCF_ONLY_AST)
+  File "<unknown>", line 1
+    Hello cherrypy.session.get('username', 'anon')
+                 ^
+SyntaxError: invalid syntax
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.3/site-packages/cherrypy/_cprequest.py", line 656, in respond
+    response.body = self.handler()
+  File "/usr/lib/python3.3/site-packages/cherrypy/lib/encoding.py", line 188, in __call__
+    self.body = self.oldhandler(*args, **kwargs)
+  File "/usr/lib/python3.3/site-packages/cherrypy/_cpdispatch.py", line 34, in __call__
+    return self.callable(*self.args, **self.kwargs)
+  File "web.py", line 24, in index
+    )
+  File "/usr/lib/python3.3/site-packages/mako/template.py", line 412, in render
+    return runtime._render(self, self.callable_, args, data)
+  File "/usr/lib/python3.3/site-packages/mako/runtime.py", line 767, in _render
+    **_kwargs_for_callable(callable_, data))
+  File "/usr/lib/python3.3/site-packages/mako/runtime.py", line 798, in _render_context
+    (inherit, lclcontext) = _populate_self_namespace(context, tmpl)
+  File "/usr/lib/python3.3/site-packages/mako/runtime.py", line 744, in _populate_self_namespace
+    ret = template.module._mako_inherit(template, context)
+  File "__index_tmpl", line 24, in _mako_inherit
+  File "/usr/lib/python3.3/site-packages/mako/runtime.py", line 703, in _inherit_from
+    template = _lookup_template(context, uri, calling_uri)
+  File "/usr/lib/python3.3/site-packages/mako/runtime.py", line 733, in _lookup_template
+    return lookup.get_template(uri)
+  File "/usr/lib/python3.3/site-packages/mako/lookup.py", line 232, in get_template
+    return self._check(uri, self._collection[uri])
+  File "/usr/lib/python3.3/site-packages/mako/lookup.py", line 326, in _check
+    return self._load(template.filename, uri)
+  File "/usr/lib/python3.3/site-packages/mako/lookup.py", line 306, in _load
+    **self.template_args)
+  File "/usr/lib/python3.3/site-packages/mako/template.py", line 291, in __init__
+    module = self._compile_from_file(path, filename)
+  File "/usr/lib/python3.3/site-packages/mako/template.py", line 368, in _compile_from_file
+    filename)
+  File "/usr/lib/python3.3/site-packages/mako/template.py", line 615, in _compile_text
+    generate_magic_comment=template.disable_unicode)
+  File "/usr/lib/python3.3/site-packages/mako/template.py", line 597, in _compile
+    node = lexer.parse()
+  File "/usr/lib/python3.3/site-packages/mako/lexer.py", line 241, in parse
+    if self.match_python_block():
+  File "/usr/lib/python3.3/site-packages/mako/lexer.py", line 376, in match_python_block
+    match.group(1)=='!', lineno=line, pos=pos)
+  File "/usr/lib/python3.3/site-packages/mako/lexer.py", line 131, in append_node
+    node = nodecls(*args, **kwargs)
+  File "/usr/lib/python3.3/site-packages/mako/parsetree.py", line 139, in __init__
+    self.code = ast.PythonCode(text, **self.exception_kwargs)
+  File "/usr/lib/python3.3/site-packages/mako/ast.py", line 37, in __init__
+    expr = pyparser.parse(code.lstrip(), "exec", **exception_kwargs)
+  File "/usr/lib/python3.3/site-packages/mako/pyparser.py", line 60, in parse
+    ), **exception_kwargs)
+mako.exceptions.SyntaxException: (SyntaxError) invalid syntax (<unknown>, line 1) ("Hello cherrypy.session.get('username', 'anon') \n") in file 'templates/port.tmpl' at line: 5 char: 5
+
+[07/Mar/2013:00:28:17] HTTP Traceback (most recent call last):
+  File "/usr/lib/python3.3/site-packages/cherrypy/_cprequest.py", line 656, in respond
+    response.body = self.handler()
+  File "/usr/lib/python3.3/site-packages/cherrypy/lib/encoding.py", line 188, in __call__
+    self.body = self.oldhandler(*args, **kwargs)
+  File "/usr/lib/python3.3/site-packages/cherrypy/_cpdispatch.py", line 34, in __call__
+    return self.callable(*self.args, **self.kwargs)
+  File "web.py", line 24, in index
+    )
+  File "/usr/lib/python3.3/site-packages/mako/template.py", line 412, in render
+    return runtime._render(self, self.callable_, args, data)
+  File "/usr/lib/python3.3/site-packages/mako/runtime.py", line 767, in _render
+    **_kwargs_for_callable(callable_, data))
+  File "/usr/lib/python3.3/site-packages/mako/runtime.py", line 799, in _render_context
+    _exec_template(inherit, lclcontext, args=args, kwargs=kwargs)
+  File "/usr/lib/python3.3/site-packages/mako/runtime.py", line 825, in _exec_template
+    callable_(context, *args, **kwargs)
+  File "__base_tmpl", line 31, in render_body
+  File "__port_tmpl", line 64, in render_controls
+AttributeError: 'Undefined' object has no attribute 'session'
+
+[07/Mar/2013:00:28:20] ENGINE Keyboard Interrupt: shutting down bus
+[07/Mar/2013:00:28:20] ENGINE Bus STOPPING
+[07/Mar/2013:00:28:25] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+[07/Mar/2013:00:28:25] ENGINE Joining '_TimeoutMonitor'
+[07/Mar/2013:00:28:42] ENGINE Stopped thread '_TimeoutMonitor'.
+[07/Mar/2013:00:28:42] ENGINE Joining 'Session cleanup'
+[07/Mar/2013:00:29:05] ENGINE Listening for SIGTERM.
+[07/Mar/2013:00:29:05] ENGINE Listening for SIGHUP.
+[07/Mar/2013:00:29:05] ENGINE Listening for SIGUSR1.
+[07/Mar/2013:00:29:05] ENGINE Bus STARTING
+[07/Mar/2013:00:29:05] ENGINE Started monitor thread '_TimeoutMonitor'.
+[07/Mar/2013:00:29:05] ENGINE Serving on 127.0.0.1:8080
+[07/Mar/2013:00:29:05] ENGINE Bus STARTED
+[07/Mar/2013:00:29:05] ENGINE Started monitor thread 'Session cleanup'.

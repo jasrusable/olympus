@@ -1,0 +1,14 @@
+## login.tmpl
+<%inherit file="port.tmpl"/>
+
+<%block name="pane">
+    % if username:
+        <p> Welcome ${username} </p>
+    % else:
+        <p>Enter login details</p>
+        <form action="login" method="post">
+            username: <input type="text" name="username"/> </br>
+            <input type="submit"/>
+        </form>
+    % endif
+</%block>
