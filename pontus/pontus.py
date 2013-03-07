@@ -4,7 +4,11 @@ from bson import ObjectId
 import acoustid
 from pprint import pprint
 
+import psycopg2
+
 db = pymongo.Connection('localhost', 27017)['test']
+
+conn = psycopg2.connect("dbname=test user=postgres")
 
 def lookup(audio_file):
     fingerprint = audio_file['fingerprint']
@@ -25,12 +29,19 @@ while(True):
                 {'_id': ObjectId(queue_entry['file_id'])})
 
         results = lookup(audio_file)
+        print(results)
 
 #TODO: this is temporary
         music_brainz_id = results[0]['recordings'][0]['id']
         title = results[0]['recordings'][0]['title']
+        uploaded_by = queue_entry['username']
 
-        db.songs.insert({
-            'username': queue_entry['username'],
-            'music_brainz_id': music_brainz_id,
-            'music_brainz_title': title})
+        cur = conn.cursor()
+
+        cur.execute(
+            "INSERT INTO songs " + 
+                "(music_brainz_id, title, uploaded_by)" + 
+            "VALUES (%s, %s, %s);",
+                (music_brainz_id, title, uploaded_by,))
+
+        conn.commit()
