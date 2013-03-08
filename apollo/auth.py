@@ -30,7 +30,8 @@ def check_auth(*args, **kwargs):
     is not None, a login is required and the entry is evaluated as a list of
     conditions that the user must fulfill"""
     conditions = cherrypy.request.config.get('auth.require', None)
-    get_params = urllib.parse.quote(cherrypy.request.request_line.split()[1])
+    from_page = cherrypy.request.request_line.split()[1]
+    print(from_page)
     if conditions is not None:
         username = cherrypy.session.get(SESSION_KEY)
         if username:
@@ -38,9 +39,11 @@ def check_auth(*args, **kwargs):
             for condition in conditions:
                 # A condition is just a callable that returns true or false
                 if not condition():
-                    raise cherrypy.HTTPRedirect("/login?from_page=%s" % get_params)
+                    cherrypy.session['_from_page'] = from_page
+                    raise cherrypy.HTTPRedirect("/login")
         else:
-            raise cherrypy.HTTPRedirect("/login?from_page=%s" % get_params)
+            cherrypy.session['_from_page'] = from_page
+            raise cherrypy.HTTPRedirect("/login")
     
 cherrypy.tools.auth = cherrypy.Tool('before_handler', check_auth)
 
@@ -99,17 +102,18 @@ def all_of(*conditions):
 class AuthController(object):
     @cherrypy.expose
     @cherrypy.tools.mako(filename="login.tmpl")
-    def login(self, username=None, password=None, from_page="/"):
+    def login(self, username=None, password=None):
         """Login Page."""
         if username is None or password is None:
-            return {'from_page':from_page}
+            return {}
 
         error_msg = check_credentials(username, password)
         if error_msg:
-            return {'from_page':from_page, 'error_msg':error_msg}
+            return {'error_msg':error_msg}
         else:
             # successful auth
             cherrypy.session['_username'] = cherrypy.request.login = username
+            from_page = cherrypy.session.get('_from_page', '/')
             raise cherrypy.HTTPRedirect(from_page)
     
     @cherrypy.expose
