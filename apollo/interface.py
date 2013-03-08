@@ -2,7 +2,7 @@ import cherrypy
 import mako_tool
 
 from auth import AuthController, require, member_of, name_is, check_credentials
-from files import handle_upload, check_file
+from files import handle_upload, check_file, gridfs_download
 
 import pymongo
 from gridfs import GridFS
@@ -39,6 +39,11 @@ class Root(object):
                 (cherrypy.session['_username'],))
         songs = cursor.fetchmany(10)
         return {'songs':songs}
+
+    @cherrypy.expose
+    @gridfs_download
+    def test(self):
+        return '5138d7dd931ed25f326c8df7'
 
     @cherrypy.expose
     @require()
